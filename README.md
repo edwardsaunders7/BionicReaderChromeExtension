@@ -30,7 +30,7 @@ To use the Bionic Reading extension:
 
 ## Support and Contribution
 
-If you encounter any issues or would like to suggest improvements, please [open an issue](https://github.com/your-github-username/bionic-reading-extension/issues) on GitHub. Contributions are welcome, and you can submit a pull request with your changes.
+If you encounter any issues or would like to suggest improvements, please [open an issue](https://github.com/edwardsaunders7/bionic-reading-extension/issues) on GitHub. Contributions are welcome, and you can submit a pull request with your changes.
 
 ---
 
