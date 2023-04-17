@@ -1,9 +1,11 @@
 let isEnabled = false;
 let focusLength = 2;
+let isDarkMode = false;
 
-chrome.storage.sync.get(["isEnabled", "focusLength"], ({ isEnabled: savedIsEnabled, focusLength: savedFocusLength }) => {
+chrome.storage.sync.get(["isEnabled", "focusLength", "isDarkMode"], ({ isEnabled: savedIsEnabled, focusLength: savedFocusLength, isDarkMode: savedIsDarkMode }) => {
   isEnabled = savedIsEnabled;
   focusLength = savedFocusLength || 2;
+  isDarkMode = savedIsDarkMode || false;
   if (isEnabled) {
     activateBionicReading();
   }
@@ -21,19 +23,25 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (isEnabled) {
       updateBionicReading();
     }
+  } else if (request.action === "toggleDarkMode") {
+    isDarkMode = request.isDarkMode;
+    updateBionicReading();
   }
 });
 
-
 function injectCSS() {
+  const primaryColor = isDarkMode ? '#B0C4DE' : 'inherit';
+  const secondaryColor = isDarkMode ? '#A0D6B4' : 'grey';
+
   const styles = `
     .bionic-primary {
       font-weight: bold;
+      color: ${primaryColor};
     }
 
     .bionic-secondary {
       font-weight: bold;
-      color: grey;
+      color: ${secondaryColor};
     }
   `;
 
