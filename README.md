@@ -30,8 +30,4 @@ To use the Bionic Reading extension:
 
 ## Support and Contribution
 
-If you encounter any issues or would like to suggest improvements, please [open an issue](https://github.com/edwardsaunders7/bionic-reading-extension/issues) on GitHub. Contributions are welcome, and you can submit a pull request with your changes.
-
----
-
-Replace `your-github-username` with your actual GitHub username in the "open an issue" link. This sample README.md file provides instructions for users to manually install and use your Bionic Reading extension. You can further customize this template to include more details, such as features, screenshots, or any additional information you'd like to provide.
+If you encounter any issues or would like to suggest improvements, please [open an issue](https://github.com/edwardsaunders7/BionicReaderChromeExtension/issues) on GitHub. Contributions are welcome, and you can submit a pull request with your changes.
