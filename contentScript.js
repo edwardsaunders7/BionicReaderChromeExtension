@@ -1,11 +1,13 @@
 let isEnabled = false;
 let focusLength = 2;
 let isDarkMode = false;
+let isDarkMode2 = false;
 
-chrome.storage.sync.get(["isEnabled", "focusLength", "isDarkMode"], ({ isEnabled: savedIsEnabled, focusLength: savedFocusLength, isDarkMode: savedIsDarkMode }) => {
+chrome.storage.sync.get(["isEnabled", "focusLength", "isDarkMode", "isDarkMode2"], ({ isEnabled: savedIsEnabled, focusLength: savedFocusLength, isDarkMode: savedIsDarkMode, isDarkMode2: savedIsDarkMode2 }) => {
   isEnabled = savedIsEnabled;
   focusLength = savedFocusLength || 2;
   isDarkMode = savedIsDarkMode || false;
+  isDarkMode2 = savedIsDarkMode2 || false;
   if (isEnabled) {
     activateBionicReading();
   }
@@ -26,6 +28,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   } else if (request.action === "toggleDarkMode") {
     isDarkMode = request.isDarkMode;
     updateBionicReading();
+  } else if (request.action === "toggleDarkMode2") {
+    isDarkMode2 = request.isDarkMode2;
+    updateBionicReading();
   }
 });
 
@@ -33,15 +38,18 @@ function injectCSS() {
   const primaryColor = isDarkMode ? '#B0C4DE' : 'inherit';
   const secondaryColor = isDarkMode ? '#A0D6B4' : 'grey';
 
+  const primaryColor2 = isDarkMode2 ? '#FFA07A' : 'inherit'; // New alternate color
+  const secondaryColor2 = isDarkMode2 ? '#FFB6C1' : 'grey'; // New alternate color
+
   const styles = `
     .bionic-primary {
       font-weight: bold;
-      color: ${primaryColor};
+      color: ${isDarkMode2 ? primaryColor2 : primaryColor};
     }
 
     .bionic-secondary {
       font-weight: bold;
-      color: ${secondaryColor};
+      color: ${isDarkMode2 ? secondaryColor2 : secondaryColor};
     }
   `;
 
@@ -66,6 +74,11 @@ function deactivateBionicReading() {
   bionicSpans.forEach((span) => {
     span.outerHTML = span.textContent;
   });
+}
+
+function updateBionicReading() {
+  deactivateBionicReading();
+  activateBionicReading();
 }
 
 function getTextNodes(element) {
@@ -113,9 +126,4 @@ function applyBionicReading(textNode) {
   });
 
   return bionicWords.join('');
-}
-
-function updateBionicReading() {
-  deactivateBionicReading();
-  activateBionicReading();
 }
