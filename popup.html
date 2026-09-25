@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <h1>Bionic Reader</h1>
+    
+    <div class="control-group">
+      <label for="toggleSwitch">Activate Extension</label>
+      <input type="checkbox" id="toggleSwitch">
+    </div>
+
+    <hr>
+
+    <div class="control-group">
+      <label for="darkModeToggle">Dark Mode Text</label>
+      <input type="checkbox" id="darkModeToggle">
+    </div>
+
+    <div class="intensity-section">
+      <label>Fixation Intensity</label>
+      <div class="button-group">
+        <button type="button" class="intensity-btn" data-value="1">Light</button>
+        <button type="button" class="intensity-btn" data-value="2">Medium</button>
+        <button type="button" class="intensity-btn" data-value="3">Strong</button>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

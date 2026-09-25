@@ -1,0 +1,11 @@
+/* Light Mode (Default) */
+.bionic-light .bionic-primary {
+  font-weight: 700 !important;
+  color: #000000 !important;
+}
+
+/* Dark Mode */
+.bionic-dark .bionic-primary {
+  font-weight: 700 !important;
+  color: #64B5F6 !important; /* Soft high-contrast blue */
+}
